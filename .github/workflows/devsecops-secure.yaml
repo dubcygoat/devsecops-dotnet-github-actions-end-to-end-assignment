@@ -52,10 +52,12 @@ jobs:
      needs: build
      name: Security Scan using Synk
      steps:
-       - name: Checkout code
-         uses: actions/checkout@master
-       - name: Synk Security Scan
-         uses: synk/actions/synk-security-check@v1
-         continue-on-error: true
-         env:
-           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        - uses: actions/checkout@master
+        #- name: Setup .NET
+          #uses: actions/setup-dotnet@8.2.1
+        - name: Restore dependencies
+          run: dotnet restore SomeConsoleApplication.sln
+        - name: Run Snyk to check for vulnerabilities
+          uses: snyk/actions/dotnet@master
+          env:
+            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
