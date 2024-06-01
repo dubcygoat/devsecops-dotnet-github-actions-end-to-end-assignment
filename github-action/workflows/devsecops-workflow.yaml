@@ -9,7 +9,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-dotnet@v3
       with:
-        dotnet-vesion: '6.0.x'
+        dotnet-vesion: 8.0.x
     - name: install dependencies 
       run: dotnet restore
 
