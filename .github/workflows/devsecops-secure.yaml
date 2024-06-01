@@ -55,8 +55,7 @@ jobs:
        - name: Checkout code
          uses: actions/checkout@master
        - name: Synk Security Scan
-         uses: synk/actions/dotnet@master
+         uses: synk/actions/synk-security-check@v1
          continue-on-error: true
          env:
-           SYNK-TOKEN: ${{ secrets.SYNK_TOKEN }}
-          
+           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
